@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<meta charset="utf-8">
+<html>
+<head>
+    <style>
+
+    </style>
+
+    <link rel="stylesheet" href="./static/css/style.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Suicide Rate Data Visualization</title>
+</head>
+<body style="background-color: white">
+<div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
+    <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey">
+        <i class="fa fa-bars"></i>  Menu
+    </button>
+    <span class="w3-bar-item w3-right">Suicide Rates Overview 1985 to 2016</span>
+</div>
+<header class="w3-container">
+    <center style="margin-top: 50px">
+        <h5><b>Data Clustering, Decimation and Dimension Reduction</b></h5>
+    </center>
+</header>
+<div class="row">
+     <label class="container" style="width:300px">Original Data Scree Plot
+            <input type="checkbox" name="checkboxOriginal" id="screeCheck">
+            <span class="checkmark"></span>
+        </label>
+    <label class="container" style="width:400px">3 Highest PCA Scree Plot
+            <input type="checkbox" name="highestCheck" id="highestCheck">
+            <span class="checkmark"></span>
+        </label>
+
+    <div class="plotterDropdown">
+
+        <select id="plotter">
+            <option value="pca">PCA</option>
+            <option value="mds_cor">MDS Correlation</option>
+            <option value="mds_euc">MDS Euclidian</option>
+            <option value="scat_mat">Scatter Matrix</option>
+            <option value="scree">Scree Plot</option>
+        </select>
+    </div>
+    <div class = "samplerDropdown">
+        <select id="sampler">
+            <option value="rand">Random Sampling</option>
+            <option value="strat">Stratified Sampling</option>
+        </select>
+    </div>
+
+</div>
+<div class="overlay">
+    <div class="loader" style="z-index:4;margin-left: 650px;pointer-events: none;margin-top: 250px"></div>
+</div>
+
+<div id="error"></div>
+
+</body>
+
+<script src="http://d3js.org/d3.v4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+<script type=text/javascript>
+    $SCRIPT_ROOT = {{request.script_root | tojson | safe}};
+</script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+<script>
+$(document).ready(function () {
+var js = new suicideRate();
+});
+</script>
+
+
+</html>
